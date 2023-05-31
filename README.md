@@ -23,22 +23,18 @@ git clone https://github.com/Ksenia-Mesh/Diplom.git
 
 1. Запустите контейнер, в котором разворачивается база данных:
 ```
-docker-compose up
+docker-compose up -d --force-recreate
 ```
 2. Запустить SUT во вкладке Terminal Intellij IDEA командой:
-````
+```
 java -jar artifacts/aqa-shop.jar
 ```
-## Запуск тестов
-В новой вкладке терминала ввести команду: .\gradlew clean test
-
-
-
-Формирование отчета AllureReport по результатам тестирования
-В новой вкладке терминала или нажав двойной Ctrl ввести команду:
-
+## Запуск тестов и формироание отчета
+В новой вкладке терминала ввести команду:  
+```
+./gradlew clean test allureReport -Dheadless=true
+```
+```
 ./gradlew allureServe
-Сгенерированный отчет откроется в браузере автоматически. После просмотра и закрытия отчета можно остановить работу команды, нажав Ctrl+С или закрыть вкладку Run и нажать Disconnect.
-Для запуска авто-тестов в Terminal Intellij IDEA открыть новую сессию и ввести команду: ./gradlew clean test allureReport -Dheadless=true где: allureReport - подготовка данных для отчета Allure; -Dheadless=true - запускает авто-тесты в headless-режиме (без открытия браузера).
+```
 
-Для просмотра отчета Allure в терминале ввести команду: ./gradlew allureServe
